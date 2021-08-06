@@ -1,0 +1,609 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled2.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyPOVmrKnIzHu3ipo9klkEKD",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Joanharon/Joanharon/blob/main/PythonNotebook_Week3_IP\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8t14QXtrF2OK"
+      },
+      "source": [
+        " #Let's import the pandas library \n",
+        "\n",
+        "import pandas as pd"
+      ],
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "Yktxpg40HNnG",
+        "outputId": "d2534457-5cf5-4941-cb2b-a77bdce82487"
+      },
+      "source": [
+        "#Creating our database from csv file\n",
+        "df = pd.read_csv('cells_geo.csv')\n",
+        "df.head()"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>;VILLES;STATUS;LOCALISATION;DECOUPZONE;ZONENAME;LONGITUDE;LATITUDE;REGION;AREA;CELL_ID;SITE_CODE</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3;ASSINIE;In Service;INTERIEUR;Grand-EST;\"ASSI...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4;ASSINIE;In Service;INTERIEUR;Grand-EST;\"ASSI...</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  ;VILLES;STATUS;LOCALISATION;DECOUPZONE;ZONENAME;LONGITUDE;LATITUDE;REGION;AREA;CELL_ID;SITE_CODE\n",
+              "0  0;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...                                              \n",
+              "1  1;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...                                              \n",
+              "2  2;ADJAME;In Service;ABIDJAN;\"\"\"Abidjan_EST\";AG...                                              \n",
+              "3  3;ASSINIE;In Service;INTERIEUR;Grand-EST;\"ASSI...                                              \n",
+              "4  4;ASSINIE;In Service;INTERIEUR;Grand-EST;\"ASSI...                                              "
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "pNpWu1NFNLwo",
+        "outputId": "fa003ce8-665d-4772-fc7a-870f06aed591"
+      },
+      "source": [
+        "#Creating our second database from excel\n",
+        "df1= pd.read_excel('CDR_description.xlsx')\n",
+        "df1.head()"
+      ],
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Column name</th>\n",
+              "      <th>Description</th>\n",
+              "      <th>Format</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>PRODUCT</td>\n",
+              "      <td>Voice or SMS</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>VALUE</td>\n",
+              "      <td>Billing price</td>\n",
+              "      <td>Integer</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>DATE_TIME</td>\n",
+              "      <td>Time in format yyyy-MM-dd hh:mm:ss.0</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>CELL_ON_SITE</td>\n",
+              "      <td>Which cell in the site was used (not needed here)</td>\n",
+              "      <td>Integer</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>DW_A_NUMBER_INT</td>\n",
+              "      <td>Anonymized phone number of the person for whic...</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       Column name                                        Description   Format\n",
+              "0          PRODUCT                                       Voice or SMS   String\n",
+              "1            VALUE                                      Billing price  Integer\n",
+              "2        DATE_TIME               Time in format yyyy-MM-dd hh:mm:ss.0   String\n",
+              "3     CELL_ON_SITE  Which cell in the site was used (not needed here)  Integer\n",
+              "4  DW_A_NUMBER_INT  Anonymized phone number of the person for whic...   String"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "id": "wjCiF8D7NLcE",
+        "outputId": "ddf14656-27e0-4e2a-8eb1-bb763907afef"
+      },
+      "source": [
+        "#Creating our third database from excel\n",
+        "df2 = pd.read_excel('cells_geo_description.xlsx')\n",
+        "df2.head()"
+      ],
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Column name</th>\n",
+              "      <th>Description</th>\n",
+              "      <th>Format</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>VILLES</td>\n",
+              "      <td>City</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>STATUS</td>\n",
+              "      <td>In Service or not</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>LOCALISATION</td>\n",
+              "      <td>in ABIDJAN or not</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>DECOUPZONE</td>\n",
+              "      <td>Geographical Zone</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>ZONENAME</td>\n",
+              "      <td>Name of Zone</td>\n",
+              "      <td>String</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "    Column name        Description  Format\n",
+              "0        VILLES               City  String\n",
+              "1        STATUS  In Service or not  String\n",
+              "2  LOCALISATION  in ABIDJAN or not  String\n",
+              "3    DECOUPZONE  Geographical Zone  String\n",
+              "4      ZONENAME       Name of Zone  String"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 309
+        },
+        "id": "4ANB710cvHNY",
+        "outputId": "13b02f9d-ccde-40d7-9409-27a2cb499845"
+      },
+      "source": [
+        "#Creating dataframe 1 from URL\n",
+        "Tel_data_set1 = pd.read_csv(\"http://bit.ly/TelecomDataset1\")\n",
+        "Tel_data_set1.head()"
+      ],
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>PRODUTC</th>\n",
+              "      <th>VALUE</th>\n",
+              "      <th>DATETIME</th>\n",
+              "      <th>CELL_ON_SITE</th>\n",
+              "      <th>DW_A_NUMBER_INT</th>\n",
+              "      <th>DW_B_NUMBER_INT</th>\n",
+              "      <th>COUNTRY_A</th>\n",
+              "      <th>COUNTRY_B</th>\n",
+              "      <th>CELL_ID</th>\n",
+              "      <th>SITE_ID</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Voice</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2012-05-06 23:04:37.0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>49fae048b547780</td>\n",
+              "      <td>1a49f8b0ded9de6</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>/TJNe+Mmtu</td>\n",
+              "      <td>/TJNe+Mmtu</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>sms</td>\n",
+              "      <td>0</td>\n",
+              "      <td>2012-05-06 23:05:25.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>7a54a6eaee19e65</td>\n",
+              "      <td>93343ba6e41af95</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>/+cKZKIp41</td>\n",
+              "      <td>/+cKZKIp41</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>sms</td>\n",
+              "      <td>25</td>\n",
+              "      <td>2012-05-06 23:05:41.0</td>\n",
+              "      <td>0</td>\n",
+              "      <td>6008887b0207d82</td>\n",
+              "      <td>7aacc9709ce0a20</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>/u0FSD+ahi</td>\n",
+              "      <td>/u0FSD+ahi</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Voice</td>\n",
+              "      <td>56</td>\n",
+              "      <td>2012-05-06 23:05:42.0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>7370032e20f4e96</td>\n",
+              "      <td>6af4a60e74c91d3</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>+cNeJzsTp3</td>\n",
+              "      <td>+cNeJzsTp3</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Voice</td>\n",
+              "      <td>14</td>\n",
+              "      <td>2012-05-06 23:06:29.0</td>\n",
+              "      <td>1</td>\n",
+              "      <td>966ba4656e38e62</td>\n",
+              "      <td>02aa736ee555d5c</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>19e2e</td>\n",
+              "      <td>051KhYDCpv</td>\n",
+              "      <td>051KhYDCpv</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  PRODUTC  VALUE               DATETIME  ... COUNTRY_B     CELL_ID     SITE_ID\n",
+              "0   Voice      0  2012-05-06 23:04:37.0  ...     19e2e  /TJNe+Mmtu  /TJNe+Mmtu\n",
+              "1     sms      0  2012-05-06 23:05:25.0  ...     19e2e  /+cKZKIp41  /+cKZKIp41\n",
+              "2     sms     25  2012-05-06 23:05:41.0  ...     19e2e  /u0FSD+ahi  /u0FSD+ahi\n",
+              "3   Voice     56  2012-05-06 23:05:42.0  ...     19e2e  +cNeJzsTp3  +cNeJzsTp3\n",
+              "4   Voice     14  2012-05-06 23:06:29.0  ...     19e2e  051KhYDCpv  051KhYDCpv\n",
+              "\n",
+              "[5 rows x 10 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 14
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LLTUYq-kyjJ1"
+      },
+      "source": [
+        "#Creating dataframe 2 from URL\n",
+        "Tel_data_set2 = pd.read_csv(\"http://bit.ly/TelecomDataset2\")\n",
+        "Tel_data_set2.head()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oX04T6PNylxN"
+      },
+      "source": [
+        "#Creating dataframe 3 from URL\n",
+        "Tel_data_set3 = pd.read_url(\"http://bit.ly/TelecomDataset3\")\n",
+        "Tel_data_set3.head()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZQHDQ4VtbpR3"
+      },
+      "source": [
+        "#Cleaning first dataframe i.e. the cells_geo.csv\n",
+        "\n",
+        "#Checking if there is any null or duplicate \n",
+        "df.isnull().values.any()\n",
+        "df.duplicated()\n",
+        "\n",
+        "#CLEANING THE FIRST TELECOM DATASET.\n",
+        "#First we drop the columns we will not need\n",
+        "Tel_data_set1.drop('COUNTRY_A' , axis = 1 ,inplace = True)\n",
+        "Tel_data_set1.drop('COUNTRY_B' , axis = 1 ,inplace = True)\n",
+        "\n",
+        "#Check for duplicates\n",
+        "Tel_data_set1.duplicated()\n",
+        "Tel_data_set1 = Tel_data_set1.drop_duplicates()\n",
+        "Tel_data_set1.head()\n",
+        "\n",
+        "#CLEANING THE SECOND TELECOM DATASET.\n",
+        "#First we drop the columns we will not use \n",
+        "Tel_data_set2.drop('COUNTRY_A ' , axis = 1 ,inplace = True)\n",
+        "Tel_data_set2.drop('COUNTRY B' , axis = 1 ,inplace = True)\n",
+        "\n",
+        "#check for duplicates and any null and replace nulls.\n",
+        "Tel_data_set2.duplicated()\n",
+        "Tel_data_set2.drop_duplicates()\n",
+        "Tel_data_set2.isnull().values.any()\n",
+        "Tel_data_set2 = Tel_data_set2.fillna('Not Identified')\n",
+        "Tel_data_set2.head()\n",
+        " \n",
+        "\n",
+        "#CLEANING THE THIRD TELECOM DATASET\n",
+        "#Dropping the columns we will not be using\n",
+        "Tel_data_set3.drop('COUNTRY_A' , axis = 1 ,inplace = True)\n",
+        "Tel_data_set3.drop('COUNTRY_B' , axis = 1 ,inplace = True)\n",
+        "\n",
+        "#Check for duplicates,nulls and replace the nulls\n",
+        "Tel_data_set3.duplicated()\n",
+        "Tel_data_set2.drop_duplicates()\n",
+        "Tel_data_set3.isnull().values.any()\n",
+        "Tel_data_set3 = Tel_data_set2.fillna('Not Identified')\n",
+        "Tel_data_set3.head()\n",
+        "\n",
+        "#When Merging, Some columns may not merge cause of spelling errors from the other dataframes.\n",
+        "#We need to check the spellings on the columns we have and check its okay spelt.\n",
+        "Tel_data_set1.columns.values[2:3] = ['DATE_TIME']\n",
+        "Tel_data_set1.columns.values[0:1] = ['PRODUCT']\n",
+        "\n",
+        "Tel_data_set2.columns.value[3:5] = ['DW_A_NUMBER_INT' , 'DW_B_NUMBER_INT']\n",
+        "\n",
+        "Tel_data_set3.columns.value[5:] = ['CELL_ID' , 'SITE_ID']\n"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5g87W5iMrs8Z"
+      },
+      "source": [
+        "#MERGING.\n",
+        "#Merge the telecom data sets\n",
+        "TelecomData = pd.concat(Tel_data_set1 , Tel_data_set2 , Tel_data_set3)\n",
+        "TelecomData\n",
+        "\n",
+        "#Merge the other datasets with the telecome data.\n",
+        "Dataframe = pd.merge(df,TelecomData, how = 'inner' , left_on = 'SITE_ID' , right_on = 'SITE_CODE')\n",
+        "Dataframe"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ntIFWn9u0Ait"
+      },
+      "source": [
+        "#DATA ANALYSIS.\n",
+        "#First, we load our merged data\n",
+        "Dataframe"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "f1BqH58r0UIi"
+      },
+      "source": [
+        "#Regions and their use of the products\n",
+        "Dataframe['REGION'] .value_counts()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "cFoJYanj2IBv"
+      },
+      "source": [
+        "#Cities and their usage\n",
+        "Dataframe['VILLES'] .value_counts()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "izhD2q8v1s12"
+      },
+      "source": [
+        "#The most used product in the 3 days\n",
+        "Dataframe.groupby ('PRODUCT')('VALUE') .sum()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
